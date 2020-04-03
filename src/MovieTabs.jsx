@@ -1,4 +1,5 @@
-import * as React from 'react'
+import * as React from 'react';
+import classNames from 'classnames';
 
 export class MovieTabs extends React.Component {
 
@@ -18,27 +19,30 @@ export class MovieTabs extends React.Component {
         const { sort: sorting, sortMovies } = this.props;
         const clickHandler = (value) => () => sortMovies(value);
         const generateClass = (value) => {
-            return `nav-link ${sorting === value ? "active": ""}`
+            return classNames(`nav-link`, {'active': sorting === value})
         };
         return (
             <ul className="tab nav nav-pills mb-4">
                 <li className="nav-item">
-                    <div className={generateClass(`popularity.desc`)}
-                         onClick={clickHandler(`popularity.desc`)}>
+                    <button type="button"
+                            className={generateClass(`popularity.desc`)}
+                            onClick={clickHandler(`popularity.desc`)}>
                         Sort Popularity
-                    </div>
+                    </button>
                 </li>
                 <li className="nav-item">
-                    <div className={generateClass(`revenue.desc`)}
-                         onClick={clickHandler(`revenue.desc`)}>
+                    <button type="button"
+                            className={generateClass(`revenue.desc`)}
+                            onClick={clickHandler(`revenue.desc`)}>
                         Sort Revenue
-                    </div>
+                    </button>
                 </li>
                 <li className="nav-item">
-                    <div className={generateClass(`vote_average.desc`)}
-                         onClick={clickHandler(`vote_average.desc`)}>
+                    <button type="button"
+                            className={generateClass(`vote_average.desc`)}
+                            onClick={clickHandler(`vote_average.desc`)}>
                         Sort Vote average
-                    </div>
+                    </button>
                 </li>
             </ul>
         )
